@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Breakout clone</title>
+    <!-- boarder for canvas -->
+    <style media="screen">
+      canvas {
+        border: 2px black solid;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="700"></canvas>
+<script>
+var canvas = document.querySelector('canvas')
+var context = canvas.getContext('2d');
+
+// use for debug or catch key
+var log = console.log.bind(console)
+
+// Can initial img without 'var' as a global variable,
+// so we can know the values of img in console of browser,
+// such as width, height etc.
+var img = new Image();
+// location
+var x = 150
+var y = 600
+var speed = 15
+img.src = 'paddle.png'
+
+
+var left = false
+var right = false
+// event
+window.addEventListener('keydown', function(event){
+  var key = event.key
+  log('keydown')
+  if (key == 'a') {
+    left = true
+  } else if (key == 'd') {
+    right = true
+  }
+})
+window.addEventListener('keyup', function(event){
+  var key = event.key
+  log('keyup')
+  if (key == 'a') {
+    left = false
+  } else if (key == 'd') {
+    right = false
+  }
+})
+// timer
+// set FPS as 30
+setInterval(function () {
+  if (left) {
+    x -= speed
+    //left = false
+  } else if (right) {
+    x += speed
+    //right = false
+  }
+
+  context.clearRect(0,0,canvas.width,canvas.height)
+  context.drawImage(img,x,y)
+}, 1000/30);
+</script>
+  </body>
+</html>
