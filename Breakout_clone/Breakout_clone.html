@@ -12,7 +12,47 @@
   </head>
   <body>
     <canvas id="canvas" width="500" height="700"></canvas>
-<script src="game.js">
-</script>
+	<input id="fps" type="range" value="1">
+	<script src="helper.js"></script>
+	<script src="ball.js"></script>
+	<script src="block.js"></script>
+	<script src="paddle.js"></script>
+	<script src="game.js"></script>
+	<script>
+	// main function
+	var main = function() {
+	
+	  var game = new Game()
+	  // set the actions I want
+	  game.setAction('a', function() {
+		  if (game.paddle.x > 1) { 
+			game.paddle.moveLeft()
+			if (!game.ball.fired) {
+				game.ball.moveLeft(game.paddle.speed)
+			}
+		}
+	  })
+	  game.setAction('d', function() {
+		  if (game.paddle.x < 499 - game.paddle.img.width) {
+			game.paddle.moveRight()
+			if (!game.ball.fired) {
+				game.ball.moveRight(game.paddle.speed)
+			}
+		}
+	  })
+	  game.setAction('f', function() {
+		  game.ball.fire()
+	  })
+	  
+	  // window action
+	  window.addEventListener('keydown', function(event){
+		  var k = event.key
+		  // paused 
+	      if (k == 'p') game.paused = !game.paused
+	  })
+	}
+	
+	main()
+	</script>
   </body>
 </html>
