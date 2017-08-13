@@ -19,6 +19,7 @@ document.querySelector('#fps').addEventListener('input', function(event) {
 // list of images should be loaded
 var images = {
 	ball: 'ball.png',
+	ball1: 'ball1.png',
 	paddle: 'paddle.png',
 	block: 'block.png',
 	block1: 'block1.png',

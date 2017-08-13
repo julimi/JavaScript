@@ -7,6 +7,7 @@ var Game = function() {
 	score: 0,
 	lvl: 1,
 	background: new_images['background'],
+	over: false,
   }
   // paddle,blocks and ball in game
   	obj.paddle = Paddle()
@@ -30,11 +31,33 @@ var Game = function() {
     obj.actions[key] = func
   }
 
+  // determine if game is over
+  obj.gameOver = function() {
+	  if (obj.ball.y >= obj.canvas.height) obj.over = true
+  }
+  // reset the game
+  obj.reset = function() {
+	  location.reload()
+  }
   // draw
   obj.context.font="30px Verdana"
   obj.draw = function() {
 	//log(obj.background, obj.paddle.img)
     obj.context.clearRect(0,0,obj.canvas.width,obj.canvas.height)
+	// check is it gameover
+	obj.gameOver()
+	if (obj.over) {
+		obj.context.fillStyle = "black"
+		obj.context.fillRect(0,0,obj.canvas.width,obj.canvas.height)
+		obj.context.fillStyle = "white"
+		// draw gameover logo
+		obj.context.fillText("Game Over!",150,250)
+		// draw scoreboard
+		obj.context.fillText("Score: " + obj.score,150,350)
+		// draw Level
+		obj.context.fillText("Level: " + obj.lvl,150,400)
+		
+	} else {
 	// draw background
 	obj.context.drawImage(obj.background,0,0)
 	// draw paddle
@@ -48,10 +71,11 @@ var Game = function() {
 			obj.context.drawImage(b.img,b.x,b.y)
 		}
 	}
-	// draw scoreboard
-	obj.context.fillText("Score: " + obj.score,5,685)
-	// draw Level
-	obj.context.fillText("Level: " + obj.lvl,350,685)
+		// draw scoreboard
+		obj.context.fillText("Score: " + obj.score,5,685)
+		// draw Level
+		obj.context.fillText("Level: " + obj.lvl,350,685)
+	}
   }
 
   // update
@@ -73,12 +97,14 @@ var Game = function() {
 	obj.ball.move()
 	if (obj.paddle.reboundBall(obj.ball)) {
 		obj.ball.rebound()
+		obj.ball.changeImg() 
 	}
 	for (var i = 0; i < obj.blocks.length; i++) {
 		var b = obj.blocks[i]
 		if (b.reboundBall(obj.ball)) {
 			b.kill()
 			obj.ball.rebound()
+			//obj.ball.changeImg()
 			obj.score += 100
 		}
 	}

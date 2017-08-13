@@ -6,6 +6,7 @@ var Ball = function() {
 	  x: 220,
 	  y: 550,
 	  fired: false,
+	  otherImg: false,
     }
     obj.img = new_images['ball']
 	obj.fire = function() {
@@ -17,6 +18,14 @@ var Ball = function() {
     obj.moveRight = function(speed) {
       obj.x += speed
     }
+	obj.changeImg = function() {
+		obj.otherImg = !obj.otherImg
+		if (obj.otherImg) {
+			obj.img = new_images['ball1']
+		} else {
+			obj.img = new_images['ball']
+		}
+	}
     obj.move = function() {
 		if (obj.fired) {
 			log('3',obj.y,obj.speedY)

@@ -54,8 +54,9 @@
 	  // window action
 	  window.addEventListener('keydown', function(event){
 		  var k = event.key
+		  log(event)
 		  // paused 
-	      if (k == 'p') {
+	      if (k == ' ') {
 			  game.paused = !game.paused
 		  }
 		  else if ('123'.includes(k)) {
@@ -63,6 +64,8 @@
 			  curLvl = level[Number(k)-1]
 			  game.blocks = buildBlocks()
 			  game.lvl = Number(k)
+		  } else if (k == 'Enter') {
+			  game.reset()
 		  }
 	  })
 	  
