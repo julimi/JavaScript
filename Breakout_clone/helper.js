@@ -23,6 +23,7 @@ var images = {
 	block: 'block.png',
 	block1: 'block1.png',
 	block2: 'block2.png',
+	background: 'background.png',
 }
 // list of images loaded
 var new_images = {}
@@ -58,3 +59,16 @@ var collideWith = function(a,b) {
 	return false
 }
 
+// Level
+curLvl = level[0]
+
+
+var buildBlocks = function() {
+	var blocks = []
+	for (var i = 0; i < curLvl.length; i++) {
+		var p = curLvl[i]
+		var b = Block(p)
+		blocks.push(b)
+	}
+	return blocks
+}

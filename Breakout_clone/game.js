@@ -1,15 +1,3 @@
-var buildBlocks = function() {
-	var blocks = []
-	for (var i = 0; i < 10; i++) {
-		for (var j = 0; j < 10; j++) {
-			var p = [i*50,j*20]
-			var b = new Block(p)
-			blocks.push(b)
-		}
-	}
-	return blocks
-}
-
 // Breakout_clone game body
 var Game = function() {
   var obj = {
@@ -17,10 +5,12 @@ var Game = function() {
     actions: {},
 	paused: false,
 	score: 0,
+	lvl: 1,
+	background: new_images['background'],
   }
   // paddle,blocks and ball in game
-  	obj.paddle = new Paddle()
-	obj.ball = new Ball()
+  	obj.paddle = Paddle()
+	obj.ball = Ball()
 	obj.blocks = buildBlocks()
 	log('1', obj.ball.speedY)
   	obj.canvas = document.querySelector('canvas')
@@ -43,7 +33,10 @@ var Game = function() {
   // draw
   obj.context.font="30px Verdana"
   obj.draw = function() {
+	//log(obj.background, obj.paddle.img)
     obj.context.clearRect(0,0,obj.canvas.width,obj.canvas.height)
+	// draw background
+	obj.context.drawImage(obj.background,0,0)
 	// draw paddle
     obj.context.drawImage(obj.paddle.img,obj.paddle.x,obj.paddle.y)
 	// draw ball
@@ -57,6 +50,8 @@ var Game = function() {
 	}
 	// draw scoreboard
 	obj.context.fillText("Score: " + obj.score,5,685)
+	// draw Level
+	obj.context.fillText("Level: " + obj.lvl,350,685)
   }
 
   // update

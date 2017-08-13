@@ -8,7 +8,8 @@ var Block = function(position) {
 	  life: p[2] || 1,
     }
 	if (p[3]) {
-		obj.img = new_iamges[p[3]]
+		log(p[3])
+		obj.img = new_images[p[3]]
 	} else {
 		obj.img = new_images['block']
 	}

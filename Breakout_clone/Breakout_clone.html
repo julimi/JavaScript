@@ -16,6 +16,7 @@
 	<!--<div class="">
 		<textarea id="log" rows="20" cols="80"></textarea>
 	</div>-->
+	<script src="level.js"></script>
 	<script src="helper.js"></script>
 	<script src="ball.js"></script>
 	<script src="block.js"></script>
@@ -28,7 +29,7 @@
 	  //log('before',loaded.length)
 	  loadImage()
 	  //log('Done!',loaded.length)
-	  var game = new Game()
+	  var game = Game()
 	  // set the actions I want
 	  game.setAction('a', function() {
 		  if (game.paddle.x > 1) { 
@@ -54,7 +55,38 @@
 	  window.addEventListener('keydown', function(event){
 		  var k = event.key
 		  // paused 
-	      if (k == 'p') game.paused = !game.paused
+	      if (k == 'p') {
+			  game.paused = !game.paused
+		  }
+		  else if ('123'.includes(k)) {
+			  log('level', k, Number(k)-1)
+			  curLvl = level[Number(k)-1]
+			  game.blocks = buildBlocks()
+			  game.lvl = Number(k)
+		  }
+	  })
+	  
+	  // ball mouse-drag for testing the collideWith function
+	  var dragged = false
+	  // Use game.canvas so these mouse events are only valid on canvas
+	  game.canvas.addEventListener('mousedown', function(event){
+		  var x = event.offsetX
+		  var y = event.offsetY
+		  log(x,y)
+		  if (game.ball.beDragged(x,y)) {
+			  dragged = true
+		  }
+	  })
+	  game.canvas.addEventListener('mousemove', function(event){
+		  var x = event.offsetX
+		  var y = event.offsetY
+		  if (dragged) {
+			  game.ball.x = x
+			  game.ball.y = y
+		  }
+	  })
+	  game.canvas.addEventListener('mouseup', function(event){
+		  dragged = false
 	  })
 	}
 	

@@ -35,5 +35,12 @@ var Ball = function() {
     obj.rebound = function() {
 		obj.speedY *= -1
 	}
+	obj.beDragged = function(x,y) {
+		var w = obj.img.width
+		var h = obj.img.height
+		var forX = x >= obj.x && x <= obj.x+w
+		var forY = y >= obj.y && y <= obj.y+h
+		return forX && forY
+	}
     return obj
 }
