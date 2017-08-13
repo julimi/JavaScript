@@ -16,6 +16,7 @@ var Game = function() {
     keydowns: {},
     actions: {},
 	paused: false,
+	score: 0,
   }
   // paddle,blocks and ball in game
   	obj.paddle = new Paddle()
@@ -40,6 +41,7 @@ var Game = function() {
   }
 
   // draw
+  obj.context.font="30px Verdana"
   obj.draw = function() {
     obj.context.clearRect(0,0,obj.canvas.width,obj.canvas.height)
 	// draw paddle
@@ -53,7 +55,8 @@ var Game = function() {
 			obj.context.drawImage(b.img,b.x,b.y)
 		}
 	}
-
+	// draw scoreboard
+	obj.context.fillText("Score: " + obj.score,5,685)
   }
 
   // update
@@ -81,6 +84,7 @@ var Game = function() {
 		if (b.reboundBall(obj.ball)) {
 			b.kill()
 			obj.ball.rebound()
+			obj.score += 100
 		}
 	}
   }

@@ -7,7 +7,7 @@ var Ball = function() {
 	  y: 550,
 	  fired: false,
     }
-    obj.img = getImage('ball.png')
+    obj.img = new_images['ball']
 	obj.fire = function() {
 		obj.fired = true
 	}

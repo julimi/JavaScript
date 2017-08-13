@@ -5,7 +5,7 @@ var Paddle = function() {
       x: 150,
       y: 600,
     }
-    obj.img = getImage('paddle.png')
+    obj.img = new_images['paddle']
     obj.moveLeft = function() {
       obj.x -= obj.speed
 	  if (obj.x < 0) {
@@ -19,8 +19,11 @@ var Paddle = function() {
 	  } 
     }
 	obj.reboundBall = function(ball) {
-		if (!ball.fired) return false
-		if (ball.x >= obj.x && ball.x + ball.img.width <= obj.x + obj.img.width) {
+		if (!ball.fired) {
+			return false
+		}
+		if ((ball.x >= obj.x || ball.x + ball.img.width >= obj.x) 
+			&& ball.x <= obj.x + obj.img.width) {
 			if (ball.y + ball.img.height == obj.y) {
 				return true
 			}

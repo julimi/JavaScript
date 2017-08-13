@@ -8,9 +8,9 @@ var Block = function(position) {
 	  life: p[2] || 1,
     }
 	if (p[3]) {
-		obj.img = getImage(p[3])
+		obj.img = new_iamges[p[3]]
 	} else {
-		obj.img = getImage('block.png')
+		obj.img = new_images['block']
 	}
     
 	obj.reboundBall = function(ball) {

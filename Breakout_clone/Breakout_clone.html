@@ -13,6 +13,9 @@
   <body>
     <canvas id="canvas" width="500" height="700"></canvas>
 	<input id="fps" type="range" value="1">
+	<!--<div class="">
+		<textarea id="log" rows="20" cols="80"></textarea>
+	</div>-->
 	<script src="helper.js"></script>
 	<script src="ball.js"></script>
 	<script src="block.js"></script>
@@ -22,6 +25,9 @@
 	// main function
 	var main = function() {
 	
+	  //log('before',loaded.length)
+	  loadImage()
+	  //log('Done!',loaded.length)
 	  var game = new Game()
 	  // set the actions I want
 	  game.setAction('a', function() {
