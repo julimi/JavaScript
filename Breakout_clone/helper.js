@@ -6,25 +6,16 @@ var log = console.log.bind(console)
 var log = function(v) {
 	l('#log').value += v
 }*/
-// fps
-window.fps = 30
-// control fps
-document.querySelector('#fps').addEventListener('input', function(event) {
-	var input = event.target
-	//log('in',input.value)
-	window.fps = Number(input.value)+1
-	//log('out',window.fps)
-})
 
 // list of images should be loaded
 var images = {
-	ball: 'ball.png',
-	ball1: 'ball1.png',
-	paddle: 'paddle.png',
-	block: 'block.png',
-	block1: 'block1.png',
-	block2: 'block2.png',
-	background: 'background.png',
+	ball: 'img/ball.png',
+	ball1: 'img/ball1.png',
+	paddle: 'img/paddle.png',
+	block: 'img/block.png',
+	block1: 'img/block1.png',
+	block2: 'img/block2.png',
+	background: 'img/background.png',
 }
 // list of images loaded
 var new_images = {}

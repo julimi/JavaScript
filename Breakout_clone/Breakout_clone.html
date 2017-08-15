@@ -9,6 +9,16 @@
         border: 2px black solid;
       }
     </style>
+	<script src="level.js"></script>
+	<script src="helper.js"></script>
+	<script src="game_body/ball.js"></script>
+	<script src="game_body/block.js"></script>
+	<script src="game_body/paddle.js"></script>
+	<script src="view/view.js"></script>
+	<script src="view/view_start/view_start.js"></script>
+	<script src="view/view_main/view_main.js"></script>
+	<script src="view/view_end/view_end.js"></script>
+	<script src="game_body/game.js"></script>
   </head>
   <body>
     <canvas id="canvas" width="500" height="700"></canvas>
@@ -16,84 +26,6 @@
 	<!--<div class="">
 		<textarea id="log" rows="20" cols="80"></textarea>
 	</div>-->
-	<script src="level.js"></script>
-	<script src="helper.js"></script>
-	<script src="ball.js"></script>
-	<script src="block.js"></script>
-	<script src="paddle.js"></script>
-	<script src="game.js"></script>
-	<script>
-	// main function
-	var main = function() {
-	
-	  //log('before',loaded.length)
-	  loadImage()
-	  //log('Done!',loaded.length)
-	  var game = Game()
-	  // set the actions I want
-	  game.setAction('a', function() {
-		  if (game.paddle.x > 1) { 
-			game.paddle.moveLeft()
-			if (!game.ball.fired) {
-				game.ball.moveLeft(game.paddle.speed)
-			}
-		}
-	  })
-	  game.setAction('d', function() {
-		  if (game.paddle.x < 499 - game.paddle.img.width) {
-			game.paddle.moveRight()
-			if (!game.ball.fired) {
-				game.ball.moveRight(game.paddle.speed)
-			}
-		}
-	  })
-	  game.setAction('f', function() {
-		  game.ball.fire()
-	  })
-	  
-	  // window action
-	  window.addEventListener('keydown', function(event){
-		  var k = event.key
-		  log(event)
-		  // paused 
-	      if (k == ' ') {
-			  game.paused = !game.paused
-		  }
-		  else if ('123'.includes(k)) {
-			  log('level', k, Number(k)-1)
-			  curLvl = level[Number(k)-1]
-			  game.blocks = buildBlocks()
-			  game.lvl = Number(k)
-		  } else if (k == 'Enter') {
-			  game.reset()
-		  }
-	  })
-	  
-	  // ball mouse-drag for testing the collideWith function
-	  var dragged = false
-	  // Use game.canvas so these mouse events are only valid on canvas
-	  game.canvas.addEventListener('mousedown', function(event){
-		  var x = event.offsetX
-		  var y = event.offsetY
-		  log(x,y)
-		  if (game.ball.beDragged(x,y)) {
-			  dragged = true
-		  }
-	  })
-	  game.canvas.addEventListener('mousemove', function(event){
-		  var x = event.offsetX
-		  var y = event.offsetY
-		  if (dragged) {
-			  game.ball.x = x
-			  game.ball.y = y
-		  }
-	  })
-	  game.canvas.addEventListener('mouseup', function(event){
-		  dragged = false
-	  })
-	}
-	
-	main()
-	</script>
+	<script src="game_body/main.js"></script>
   </body>
 </html>
