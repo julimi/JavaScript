@@ -14,7 +14,8 @@ var main = function() {
   //log('before',loaded.length)
   loadImage()
   //log('Done!',loaded.length)
-  var game = Game()
+  //var game = Game()
+  var game = new Game()
   var view = new ViewStart(game)
   log('done!!')
   // window action
@@ -26,7 +27,9 @@ var main = function() {
 		  curLvl = level[Number(k)-1]
 		  game.blocks = buildBlocks()
 		  game.lvl = Number(k)
-	  } 
+	  } else if (k == ' ') {
+		  game.gamepause()
+	  }
 	  /*else if (k == 'Enter') {
 		  game.reset()
 	  }*/

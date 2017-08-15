@@ -3,6 +3,7 @@ class ViewStart extends View {
 		super(game)
 		game.view = this
 		game.setAction('Enter', function() {
+			//log('0')
 			var v = new ViewMain(game)
 			game.replaceView(v)
 			

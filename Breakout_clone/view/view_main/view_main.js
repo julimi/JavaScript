@@ -2,7 +2,7 @@ class ViewMain extends View {
 	constructor(game) {
 		super(game)
 		// set the actions I want
-		var g = game
+		var g = this.game
 	    g.setAction('a', function() {
 	  	  if (g.paddle.x > 1) { 
 	  		g.paddle.moveLeft()
@@ -22,9 +22,7 @@ class ViewMain extends View {
 	    g.setAction('f', function() {
 	  	  g.ball.fire()
 	    })
-		g.setAction(' ', function() {
-			g.gamepause()
-		})
+		
 	}
 	draw() {
 		//super()
@@ -62,14 +60,14 @@ class ViewMain extends View {
   		log('2', g.ball.speedY)
   		g.ball.move()
   		if (g.paddle.reboundBall(g.ball)) {
-  			g.ball.rebound()
+  			g.ball.reboundY()
   			g.ball.changeImg() 
   		}
   		for (var i = 0; i < g.blocks.length; i++) {
   			var b = g.blocks[i]
   			if (b.reboundBall(g.ball)) {
   				b.kill()
-  				g.ball.rebound()
+  				//g.ball.rebound()
   				//obj.ball.changeImg()
   				g.score += 100
   			}

@@ -15,13 +15,17 @@ var Block = function(position) {
 	}
     
 	obj.reboundBall = function(ball) {
-		return obj.alive && (collideWith(ball,obj) || collideWith(obj, ball))
+		return obj.alive && (collideWith(ball,obj,ball) || collideWith(obj,ball,ball))
 	}	
 	
 	obj.kill = function() {
 		obj.life--
 		if (obj.life < 1) {
 			obj.alive = false
+		} else if (obj.life == 1) {
+			obj.img = new_images['block']
+		} else {
+			obj.img = new_images['block1']
 		}
 	}
     return obj

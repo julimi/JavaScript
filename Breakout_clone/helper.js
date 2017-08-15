@@ -42,9 +42,13 @@ var getImage = function(path) {
 }
 
 // collide function
-var collideWith = function(a,b) {
-	if (b.x >= a.x && b.x <= a.x + b.img.width) {
+var collideWith = function(a,b,c) {
+	if (b.x >= a.x && b.x <= a.x + a.img.width) {
 		if (b.y >= a.y && a.y + a.img.height >= b.y) {
+			if (b.y != a.y+a.img.height) {
+				c.reboundX()
+			}
+			c.reboundY()
 			return true
 		}
 	}

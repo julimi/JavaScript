@@ -41,7 +41,10 @@ var Ball = function() {
 		  	obj.y += obj.speedY
   		}
     }
-    obj.rebound = function() {
+	obj.reboundX = function() {
+		obj.speedX *= -1
+	}
+    obj.reboundY = function() {
 		obj.speedY *= -1
 	}
 	obj.beDragged = function(x,y) {
