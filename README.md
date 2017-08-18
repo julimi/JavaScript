@@ -1,5 +1,4 @@
 # JavaScript Self-learning
----
 ### 跟着萧大写js
 - [Breakout Clone 打砖块][1]
 - [STG 打飞机][2]
