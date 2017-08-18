@@ -15,14 +15,14 @@ class Game {
 		this.over = false
 		//this.view = null
   
-  		// paddle,blocks and ball in game
-		this.background = new MyImage('background') 	
+  		// paddle,blocks and ball in game 	
 		this.enemyNum = 5
 		this.enemyArray = []
-		this.setupEnemy()
-		this.cloud = new Cloud('cloud2')
-		this.cloud1 = new Cloud('cloud1')
   		this.view = new ViewMain(this)
+		this.background = new MyImage('background',this)
+		this.cloud = new Cloud('cloud2',this)
+		this.cloud1 = new Cloud('cloud1',this)
+		this.setupEnemy()
 		this.plane_player = new PlanePlayer('plane_player',this)
 
 		var self = this
@@ -36,7 +36,7 @@ class Game {
 	}
 	setupEnemy() {
 		for (var i = 0; i < this.enemyNum; i++) {
-			var e = new PlaneEnemy(name)
+			var e = new PlaneEnemy(this)
 			this.enemyArray.push(e)
 		}
 	}

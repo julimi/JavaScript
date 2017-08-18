@@ -11,6 +11,7 @@ class ViewMain extends View {
 		this.addElement(g.cloud1)
 		this.addElement(g.plane_player)
 		this.addEnemy()
+		
 		// inputs
 		g.setAction('a', function() {
 			g.plane_player.moveLeft()
@@ -24,9 +25,9 @@ class ViewMain extends View {
 		g.setAction('s', function() {
 			g.plane_player.moveDown()
 		})
-		// g.setAction('f', function() {
-		// 	g.plane_player.shoot()
-		// })
+		g.setAction('\\', function() {
+		 	g.plane_player.shoot()
+		})
 	}
 	addEnemy() {
 		var g = this.game

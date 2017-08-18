@@ -1,6 +1,6 @@
 class Cloud extends MyImage {
-    constructor(name){
-		super(name)
+    constructor(name,game){
+		super(name,game)
 		//this.x = -100
 		this.setup()
     }

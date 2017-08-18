@@ -16,8 +16,10 @@ var images = {
 	plane_player: 'img/plane_player.png',
 	cloud2: 'img/cloud.png',
 	cloud1: 'img/cloud1.png',
-	bullet: 'img/bullet.png',
+	//bullet: 'img/bullet.png',
+	bullet: 'img/ball.png',
 	background: 'img/background.jpg',
+	particle: 'img/particle.png',
 }
 // list of images loaded
 var new_images = {}

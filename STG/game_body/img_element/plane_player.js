@@ -1,8 +1,7 @@
 // Paddle
 class PlanePlayer extends MyImage {
     constructor(name, game){
-		super(name)
-		this.game = game
+		super(name,game)
 		this.setup()
     }
 	setup() {
@@ -11,7 +10,7 @@ class PlanePlayer extends MyImage {
       	this.y = 600
 	}
 	shoot() {
-		var bullet = new Bullet('bullet')
+		var bullet = new Bullet('bullet',this.game)
 		var w = bullet.img.width
 		var x = this.x + this.img.width / 2 - w / 2
 		var y = this.y
@@ -20,7 +19,7 @@ class PlanePlayer extends MyImage {
 		this.game.view.addElement(bullet)
 	}
 	update() {
-		var b = this.shoot()
+	//	var b = this.shoot()
 		
 		
 	}
