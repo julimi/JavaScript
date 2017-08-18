@@ -27,6 +27,7 @@ class ViewMain extends View {
 	draw() {
 		//super()
 		var g = this.game
+		g.context.clearRect(0,0,this.game.canvas.width,this.game.canvas.height)
 		g.gameover()
 		if (g.over) {
 			var v = new ViewEnd(g)
