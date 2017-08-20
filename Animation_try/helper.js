@@ -19,10 +19,22 @@ var createImage = function() {
 		var k = cur + i
 		images[k] = pre + cur + '/' + k + suf
 	}
+	// attack
+	cur = 'attack'
+	for (var i = 0; i < 8; i++) {
+		var k = cur + i
+		images[k] = pre + cur + '/' + k + suf
+	}
+	// die
+	cur = 'die'
+	for (var i = 0; i < 7; i++) {
+		var k = cur + i
+		images[k] = pre + cur + '/' + k + suf
+	}
 	// background
 	cur = 'background'
 	suf = '.JPG'
-	images['background'] = pre + cur + suf
+	images[cur] = pre + cur + suf
 }
 // list of images loaded
 var new_images = {}

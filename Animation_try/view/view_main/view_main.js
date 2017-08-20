@@ -8,23 +8,24 @@ class ViewMain extends View {
 		//this.elements = []
 		this.addElement(g.background)
 		this.addElement(g.player)
+		this.addElement(g.enemy)
 		
 		// inputs
 		g.setAction('a', function(status) {
-			g.player.move(-g.player.speed,status)
+			g.player.move(-g.player.speed,status,true)
 		})
 		g.setAction('d', function(status) {
-			g.player.move(g.player.speed,status)
+			g.player.move(g.player.speed,status,true)
 		})
-		// g.setAction('w', function() {
-		// 	g.plane_player.moveUp()
-		// })
-		// g.setAction('s', function() {
-		// 	g.plane_player.moveDown()
-		// })
-		// g.setAction('\\', function() {
-		//  	g.plane_player.shoot()
-		// })
+		g.setAction('w', function(status) {
+			g.player.move(-g.player.speed,status,false)
+		})
+		g.setAction('s', function(status) {
+			g.player.move(g.player.speed,status,false)
+		})
+		g.setAction('\\', function() {
+		 	g.player.attack()
+		})
 	}
 	
 }

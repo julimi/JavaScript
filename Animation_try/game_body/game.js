@@ -18,6 +18,7 @@ class Game {
   		this.view = new ViewMain(this)
 		this.background = new MyImage('background',this)
 		this.player = new Player('stand0',this)
+		this.enemy = new Enemy('stand0',this)
 
 		var self = this
   		// 1.events
