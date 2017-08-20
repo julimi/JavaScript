@@ -11,8 +11,8 @@ class Particle extends MyImage {
 		this.x += this.vx
 		this.y += this.vy
 		var factor = 0.2
-		this.vx += factor * (-this.vx)
-		this.vy += factor * (-this.vy)
+		this.vx += factor * this.vx
+		this.vy += factor * this.vy
 		this.life--
 	}
 }

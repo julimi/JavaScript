@@ -9,61 +9,30 @@ class Game {
   		this.context = canvas.getContext('2d')
 		this.keydowns = {}
 		this.actions = {}
-		this.paused = false
-		this.score = 0
-		this.lvl = 1
-		this.over = false
+		// this.paused = false
+		// this.score = 0
+		// this.lvl = 1
+		// this.over = false
 		//this.view = null
   
-		this.enemyNum = 5
-		this.enemyArray = []
   		this.view = new ViewMain(this)
 		this.background = new MyImage('background',this)
-		this.cloud = new Cloud('cloud2',this)
-		this.cloud1 = new Cloud('cloud1',this)
-		this.setupEnemy()
-		this.plane_player = new PlanePlayer('plane_player',this)
+		this.player = new Player('stand0',this)
 
 		var self = this
   		// 1.events
   		window.addEventListener('keydown', function(event){
-    		self.keydowns[event.key] = true
+    		self.keydowns[event.key] = 'down'
   		})
   		window.addEventListener('keyup', function(event){
-    		self.keydowns[event.key] = false
+    		self.keydowns[event.key] = 'up'
   		})
 	}
-	setupEnemy() {
-		for (var i = 0; i < this.enemyNum; i++) {
-			var e = new PlaneEnemy(this)
-			this.enemyArray.push(e)
-		}
-	}
+	
   // 2.set each action nad keydown
   setAction(key, func) {
 	var self = this
-    self.keydowns[key] = false
     self.actions[key] = func
-  }
-
-  // determine if game is over
-  // gameover() {
-  //  var self = this
-  //  if (self.ball.y >= self.canvas.height) self.over = true
-  // }
-  // set game pause or resume
-  gamepause() {
-   	var self = this
-  	self.paused = !self.paused
-  }
-  // reload the page
-  reset() {
-	  location.reload()
-  }
-  // replace view
-  replaceView(v) {
-	  var self = this
-	  self.view = v
   }
   
   // read actions
@@ -74,8 +43,12 @@ class Game {
 	 var index = Object.keys(self.actions)
 	 for (var i = 0; i < index.length; i++) {
 		 var k = index[i]
-		 if (self.keydowns[k]) {
-			 self.actions[k]()
+		 var status = self.keydowns[k]
+		 if (status == 'down') {
+			 self.actions[k](status)
+		 } else if (status == 'up') {
+			 self.actions[k](status)
+			 self.keydowns[k] = null
 		 }
 	 }
   }

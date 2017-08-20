@@ -1,26 +1,28 @@
 // use for debug or catch key
 var log = console.log.bind(console)
-// home-make log, but find it useless
-// arrow function =>, make self be another expression
-/*var l = self => document.querySelector(self)
-var log = function(v) {
-	l('#log').value += v
-}*/
 
 // list of images should be loaded
-var images = {
-	plane_enemy1: 'img/plane_enemy1.png',
-	plane_enemy2: 'img/plane_enemy2.png',
-	plane_enemy3: 'img/plane_enemy3.png',
-	plane_enemy4: 'img/plane_enemy4.png',
-	plane_player: 'img/plane_player.png',
-	cloud2: 'img/cloud.png',
-	cloud1: 'img/cloud1.png',
-	//bullet: 'img/bullet.png',
-	bullet: 'img/ball.png',
-	background: 'img/background.jpg',
-	particle: 'img/particle.png',
-	//particle: 'img/ball1.png'
+var images = {}
+
+var createImage = function() {
+	var pre = 'img/'
+	var suf = '.png'
+	// stand
+	var cur = 'stand'
+	for (var i = 0; i < 4; i++) {
+		var k = cur + i
+		images[k] = pre + cur + '/' + k + suf
+	}
+	// run
+	cur = 'run'
+	for (var i = 0; i < 8; i++) {
+		var k = cur + i
+		images[k] = pre + cur + '/' + k + suf
+	}
+	// background
+	cur = 'background'
+	suf = '.JPG'
+	images['background'] = pre + cur + suf
 }
 // list of images loaded
 var new_images = {}
