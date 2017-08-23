@@ -43,8 +43,8 @@ class Player extends MyImage {
 			var x = (this.x + this.img.width/2)*2
 			c.save()
 			// just want to move horizontal
-			//c.translate(x, 0);
-			c.scale(-1, 1);
+			//c.translate(x, 0)
+			c.scale(-1, 1)
 			c.translate(-x, 0)
 			this.game.drawImage(this)
 			c.restore()
