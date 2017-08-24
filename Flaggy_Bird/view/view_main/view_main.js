@@ -8,9 +8,12 @@ class ViewMain extends View {
 		var background = new MyImage('background0',g)
 		var bird = new Bird('bird',g)
 		var ground = new Ground('ground',g)
+		var pillars = new Pillar(g)
 		this.addElement(background)
+		this.addElement(pillars)
 		this.addElement(ground)
 		this.addElement(bird)
+		
 		
 		// inputs
 		g.setAction('a', function(status) {

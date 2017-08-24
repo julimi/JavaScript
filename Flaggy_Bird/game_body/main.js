@@ -19,7 +19,6 @@ var main = function() {
   var game = new Game()
   var view = new ViewMain(game)
   log('done!!')
-  
 }
 
 main()

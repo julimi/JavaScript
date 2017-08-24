@@ -1,6 +1,18 @@
 // use for debug or catch key
 var log = console.log.bind(console)
 
+// config
+var es = self => document.querySelectorAll(self)
+const config = {
+	pillar_distanceY: {
+		comment: 'distanceY between pillars',
+		value: 150,
+	},
+}
+// bindall
+var binaAll = function(self, callback) {
+	
+}
 // list of images should be loaded
 var images = {}
 
@@ -24,7 +36,10 @@ var createImage = function() {
 	images[cur] = pre + cur + suf
 	// pillar
 	cur = 'pillar'
-	images[cur] = pre + cur + suf
+	for (var i = 0; i < 2; i++) {
+		var k = cur + i
+		images[k] = pre + k + suf
+	}
 }
 // list of images loaded
 var new_images = {}
