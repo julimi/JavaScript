@@ -2,6 +2,8 @@ class View {
 	constructor(game) {
 		this.game = game
 		game.view = this
+		this.gameover = false
+		this.firstend = true
 		this.elements = []
 	}
 	addElement(e) {
@@ -18,9 +20,16 @@ class View {
 		}
 	}
 	update() {
-		for (var i = 0; i < this.elements.length; i++) {
-			var e = this.elements[i]
-			e.update()
-		}
+		
+			for (var i = 0; i < this.elements.length; i++) {
+				var e = this.elements[i]
+				e.debug1 && e.debug()
+			}
+			for (var i = 0; i < this.elements.length; i++) {
+				var e = this.elements[i]
+				e.update()
+			}
+		
+		
 	}
 }

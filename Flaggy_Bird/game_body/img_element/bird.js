@@ -17,7 +17,7 @@ class Bird extends MyImage {
 		this.flipHorizontal = false
 		this.animation.bird = []
 		for (var i = 0; i < 3; i++) {
-			var j = this.name + i
+			var j = 'bird' + i
 			this.animation.bird[i] = new_images[j]
 		}
 	}

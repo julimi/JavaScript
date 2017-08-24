@@ -4,6 +4,7 @@ class MyImage {
 		this.y = 0
 		this.game = game
 		this.name = name
+		this.debug1 = false
 		log('image', name,new_images[name])
 		this.img = new_images[name]
 		this.animation = {}
@@ -13,4 +14,5 @@ class MyImage {
 		this.game.drawImage(this)
 	}
 	update() {}
+	debug() {}
 }

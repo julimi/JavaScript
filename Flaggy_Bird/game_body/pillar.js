@@ -1,15 +1,15 @@
 // pillar
 class Pillar {
-    constructor(game){
+    constructor(game, bird, view){
 		//super(name,game)
 		this.game = game
+		this.bird = bird
+		this.view = view
 		this.setup()
     }
 	setup() {
 		this.speed = 5
-		this.offset = 20
-		this.count = 3
-		
+		this.debug1 = true
 		// list of pillars
 		this.pillars = []
 		this.distanceY = 150
@@ -18,10 +18,10 @@ class Pillar {
 			var pu = new MyImage('pillar0',this.game)
 			var pd = new MyImage('pillar1',this.game)
 			var temp = []
-			pu.x = 100 + i * this.distanceX
+			pu.x = 200 + i * this.distanceX
 			pd.x = pu.x
-			log('h', pu.img.height)
-			var ay = this.setY()
+			var self = this
+			var ay = self.setY()
 			pu.y = ay[0]
 			pd.y = ay[1]
 			temp.push(pu)
@@ -41,8 +41,21 @@ class Pillar {
 			this.game.drawImage(i[1])
 		}
 	}
+	debug() {
+		this.distanceY = config.pillar_distanceY.value
+		this.distanceX = config.pillar_distanceX.value
+	}
 	update() {
+		//log('not')
 		for (var i of this.pillars) {
+			//log('i0',i[0].img)
+			//log('bird',this.bird.img)
+			var f1 = collideWith(this.bird,i[0])||collideWith(i[0],this.bird)
+			var f2 = collideWith(this.bird,i[1])||collideWith(i[1],this.bird)
+			if (f1 || f2) {
+				log('enter')
+				this.view.gameover = true
+			}
 			var limit = -100
 			if (i[0].x < limit) {
 				var cw = this.game.canvas.width

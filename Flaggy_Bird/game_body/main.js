@@ -19,6 +19,16 @@ var main = function() {
   var game = new Game()
   var view = new ViewMain(game)
   log('done!!')
+  insertRegulator()
+  bindAll('.slider','input',function(event) {
+	  var target = event.target
+	  var bind = target.dataset.value
+	  var val = target.value
+	  eval(bind + '.value =' + val)
+	  
+	  var label = target.closest('label').querySelector('.myLabel')
+	  label.innerText = val
+  })
 }
 
 main()
