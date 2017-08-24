@@ -1,5 +1,4 @@
 # JavaScript Self-learning
-//### 跟着萧大写js
 - [Breakout Clone 打砖块][1]
 - [STG 打飞机][2]
 - [Try to make a simple animation 跑动小动画][3]
